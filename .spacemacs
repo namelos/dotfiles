@@ -22,24 +22,24 @@
      emacs-lisp
      git
      github
-     finance
-     gtags
-     shell
-     search-engine
-     org
+     ;; finance
+     ;; gtags
+     ;; shell
+     ;; search-engine
+     ;; org
      html
-     latex
+     ;; latex
      erc
      clojure
      javascript
      markdown
-     python
-     haskell
-     shell-scripts
-     syntax-checking
-     (shell :variables
-            shell-default-height 30
-            shell-default-position 'bottom)
+     ;; python
+     ;; haskell
+     ;; shell-scripts
+     ;; syntax-checking
+      (shell :variables
+             shell-default-height 30
+             shell-default-position 'bottom)
      version-control
      )
    ;; List of additional packages that will be installed without being
@@ -82,14 +82,14 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(spacemacs-dark
-                         spacemacs-light)
+   dotspacemacs-themes '(spacemacs-light
+                         spacemacs-dark)
    ;; If non nil the cursor color matches the state color.
    dotspacemacs-colorize-cursor-according-to-state t
    ;; Default font. `powerline-scale' allows to quickly tweak the mode-line
    ;; size to make separators look not too crappy.
    dotspacemacs-default-font '("menlo"
-                               :size 15
+                               :size 16
                                :weight normal
                                :width normal
                                :powerline-scale 1.0)
@@ -120,7 +120,7 @@ before layers configuration."
    dotspacemacs-enable-paste-micro-state nil
    ;; Guide-key delay in seconds. The Guide-key is the popup buffer listing
    ;; the commands bound to the current keystrokes.
-   dotspacemacs-guide-key-delay 0.4
+   dotspacemacs-guide-key-delay 0.5
    ;; If non nil a progress bar is displayed when spacemacs is loading. This
    ;; may increase the boot time on some systems and emacs builds, set it to
    ;; nil ;; to boost the loading time.
@@ -168,11 +168,11 @@ before layers configuration."
   )
 
 ;; Make META the command key
-(when (eq system-type 'darwin) ;; mac specific settings
-  (setq mac-option-modifier 'meta)
-  (setq mac-command-modifier 'meta)
-  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
-  )
+;;(when (eq system-type 'darwin) ;; mac specific settings
+;;  (setq mac-option-modifier 'meta)
+;;  (setq mac-command-modifier 'meta)
+;; (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+;;  )
 
 (defun dotspacemacs/config ()
   "Configuration function.
@@ -183,19 +183,6 @@ layers configuration."
     (setq c-basic-offset 2)
     (setq indent-tabs-mode nil)
     )
-  ;; (golden-ratio-mode 1)
-  (rainbow-mode 1)
-  (fancy-battery-mode 1)
-  (whitespace-mode t)
-  (add-hook 'after-init-hook #'global-flycheck-mode)
-  ;; (add-hook 'prog-mode-hook 'highlight-indentation-current-column-mode)
-
-  ;; JSX in `web-mode`
-  (add-to-list 'auto-mode-alist '("\\.jsx" . web-mode))
-
-  ;; JS Indentation
-  (setq web-mode-code-indent-offset 2)
-  (setq web-mode-markup-indent-offset 2)
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -210,14 +197,20 @@ layers configuration."
  '(ahs-idle-interval 0.25)
  '(ahs-idle-timer 0 t)
  '(ahs-inhibit-face-list nil)
+ '(blink-cursor-mode nil)
+ '(column-number-mode t)
  '(custom-safe-themes
    (quote
     ("8aebf25556399b58091e533e455dd50a6a9cba958cc4ebb0aab175863c25b9a4" "d677ef584c6dfc0697901a44b885cc18e206f05114c8a3b7fde674fce6180879" "3f630e9f343200ce27cfeb44f01c9046a4b2687a4751ba2b30e503da307cd27b" "99fce0c01e01cb934f373a3e8c3224f80be568c6d9a548975a5cb0a0910f0a60" default)))
- '(ring-bell-function (quote ignore) t))
+ '(display-battery-mode t)
+ '(display-time-mode t)
+ '(ring-bell-function (quote ignore) t)
+ '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:family "Menlo" :foundry "nil" :slant normal :weight normal :height 181 :width normal))))
  '(company-tooltip-common ((t (:inherit company-tooltip :weight bold :underline nil))))
  '(company-tooltip-common-selection ((t (:inherit company-tooltip-selection :weight bold :underline nil)))))
